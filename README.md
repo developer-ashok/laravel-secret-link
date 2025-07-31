@@ -91,6 +91,17 @@ To enable daily cleanup of expired/viewed secrets, add this to your server's cro
 
 ---
 
+## Contact
+
+**Developer:** Ashok Chandrapal
+
+- **Phone:** [+91 9033359874](tel:+919033359874)
+- **Email:** [developer7039@gmail.com](mailto:developer7039@gmail.com)
+- **GitHub:** [@developer-ashok](https://github.com/developer-ashok)
+- **LinkedIn:** [ashok-chandrapal](https://www.linkedin.com/in/ashok-chandrapal/)
+
+---
+
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.

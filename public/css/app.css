@@ -1,0 +1,1026 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #1a1a2e;
+    font-family: 'Outfit', 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(100, 100, 200, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(200, 100, 200, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(100, 200, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(-10px, -10px) rotate(1deg); }
+    66% { transform: translate(10px, 10px) rotate(-1deg); }
+}
+
+/* Header Styles */
+.header-nav {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 80px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: fadeInHeader 1.1s 0.1s both;
+    transition: all 0.3s ease;
+}
+
+.header-nav:hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.header-lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #667eea;
+    border-radius: 18px;
+    margin-right: 1.5rem;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.header-lock:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.brand-logo {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    position: relative;
+    display: inline-block;
+    color: #667eea;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.brand-logo::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #667eea;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover::after {
+    transform: scaleX(1);
+}
+
+.header-tagline {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    margin-top: 4px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: slideInTagline 1.2s 0.3s both;
+    font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+@keyframes slideInTagline {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes fadeInHeader {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Main Content */
+.fadein-main {
+    opacity: 0;
+    animation: fadeIn 1.2s 0.3s forwards;
+    padding: 2rem 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Bento Box Container */
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Bento Box Cards */
+.bento-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #667eea;
+    border-radius: 24px 24px 0 0;
+}
+
+.bento-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.02);
+    pointer-events: none;
+    border-radius: 24px;
+}
+
+.bento-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Card Variants */
+.bento-card.feature {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.bento-card.security {
+    background: rgba(72, 187, 120, 0.1);
+}
+
+.bento-card.simple {
+    background: rgba(237, 137, 54, 0.1);
+}
+
+.bento-card.instant {
+    background: rgba(159, 122, 234, 0.1);
+}
+
+/* Card Content */
+.bento-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Outfit', 'Inter', sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+.bento-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.bento-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+/* Form Styles */
+.glass-card, .card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    color: #fff !important;
+}
+
+.glass-card:hover, .card:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Input Styles */
+input[type="text"], 
+input[type="password"], 
+textarea, 
+select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+textarea:focus, 
+select:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+    outline: none !important;
+}
+
+input[type="text"]::placeholder, 
+input[type="password"]::placeholder, 
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+}
+
+/* Button Styles */
+.btn, .btn-large {
+    background: #667eea !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    letter-spacing: 0.02em !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 0 24px !important;
+    height: 48px !important;
+    line-height: 48px !important;
+    font-size: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+}
+
+.btn-large {
+    height: 56px !important;
+    line-height: 56px !important;
+    font-size: 18px !important;
+    padding: 0 32px !important;
+    font-weight: 700 !important;
+}
+
+.btn::before, .btn-large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before, .btn-large:hover::before {
+    left: 100%;
+}
+
+.btn:hover, .btn-large:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+    background: #5a67d8 !important;
+    color: #fff !important;
+}
+
+.btn:active, .btn-large:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+.btn i, .btn-large i {
+    font-size: 20px !important;
+    margin-right: 8px !important;
+}
+
+.btn-large i {
+    font-size: 22px !important;
+}
+
+/* Materialize Button Override */
+.waves-effect {
+    background: #667eea !important;
+    color: #fff !important;
+}
+
+.waves-effect:hover {
+    background: #5a67d8 !important;
+    color: #fff !important;
+}
+
+/* Center alignment for buttons */
+.center-align .btn,
+.center-align .btn-large {
+    margin: 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Button container centering */
+.center-align {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+/* Ensure button text and icon are properly aligned */
+.btn-large .material-icons {
+    margin-right: 8px !important;
+    margin-left: 0 !important;
+}
+
+/* Override any Materialize left/right positioning */
+.material-icons.left {
+    margin-right: 8px !important;
+    margin-left: 0 !important;
+    float: none !important;
+}
+
+.material-icons.right {
+    margin-left: 8px !important;
+    margin-right: 0 !important;
+    float: none !important;
+}
+
+/* Floating Action Buttons */
+.fab-create {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 1001;
+    background: #667eea !important;
+    color: #fff !important;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+    border-radius: 50% !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.fab-create:hover {
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6) !important;
+    transform: scale(1.1) rotate(5deg) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.fab-contact {
+    position: fixed !important;
+    bottom: 32px !important;
+    right: 120px !important;
+    z-index: 1002 !important;
+    background: #f093fb !important;
+    color: #fff !important;
+    box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4) !important;
+    border-radius: 50% !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255,255,255,0.2) !important;
+    width: 56px !important;
+    height: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.fab-contact:hover {
+    box-shadow: 0 12px 35px rgba(240, 147, 251, 0.6) !important;
+    transform: scale(1.1) rotate(-5deg) !important;
+    border-color: rgba(255,255,255,0.4) !important;
+}
+
+.fab-contact i {
+    font-size: 24px !important;
+}
+
+/* Footer */
+.footer {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1rem !important;
+    letter-spacing: 1px !important;
+    margin-top: 3rem !important;
+    padding: 2rem 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer .footer-social a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin: 0 8px !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer .footer-social a:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+/* Contact Modal Styles */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1a1a2e;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    animation: modalFadeIn 0.3s ease-out;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    transform: none;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.contact-modal .modal-content {
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 
+        0 25px 80px rgba(0,0,0,0.4),
+        0 15px 40px rgba(0,0,0,0.2);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px);
+}
+
+.contact-modal .modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #667eea;
+    border-radius: 24px 24px 0 0;
+}
+
+.contact-modal .modal-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.02);
+    pointer-events: none;
+    border-radius: 24px;
+}
+
+@keyframes modalSlideIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-30px) scale(0.95);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
+}
+
+.contact-modal .modal-header {
+    padding: 25px 30px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-modal .modal-header h4 {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.contact-modal .modal-header h4::before {
+    content: '💬';
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.contact-modal .close {
+    color: rgba(255,255,255,0.8);
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+    margin-left: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-modal .close:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.2);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.contact-modal .modal-body {
+    padding: 30px;
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+    min-height: 60px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-item:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.contact-item:hover::before {
+    left: 100%;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item i {
+    margin-right: 18px;
+    color: rgba(255,255,255,0.9);
+    font-size: 24px;
+    width: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.contact-item:hover i {
+    color: #fff;
+    transform: scale(1.1);
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    position: relative;
+    word-break: break-word;
+    flex: 1;
+    min-width: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.contact-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.8);
+    transition: width 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #fff;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.contact-item a:hover::after {
+    width: 100%;
+}
+
+.contact-item span {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.05rem;
+    word-break: break-word;
+    flex: 1;
+    min-width: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Contact item specific styles with solid colors */
+.contact-item.phone i { 
+    color: #48bb78; 
+    text-shadow: 0 2px 4px rgba(72, 187, 120, 0.3);
+}
+.contact-item.phone:hover i { 
+    color: #38a169; 
+    text-shadow: 0 4px 8px rgba(72, 187, 120, 0.5);
+}
+
+.contact-item.email i { 
+    color: #ed8936; 
+    text-shadow: 0 2px 4px rgba(237, 137, 54, 0.3);
+}
+.contact-item.email:hover i { 
+    color: #dd6b20; 
+    text-shadow: 0 4px 8px rgba(237, 137, 54, 0.5);
+}
+
+.contact-item.github i { 
+    color: rgba(255, 255, 255, 0.8); 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.contact-item.github:hover i { 
+    color: #fff; 
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.contact-item.linkedin i { 
+    color: #3182ce; 
+    text-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
+}
+.contact-item.linkedin:hover i { 
+    color: #2c5aa0; 
+    text-shadow: 0 4px 8px rgba(49, 130, 206, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bento-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .bento-card {
+        padding: 1.5rem;
+        min-height: 180px;
+    }
+    
+    .brand-logo {
+        font-size: 1.8rem;
+    }
+    
+    .header-nav .nav-wrapper {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.5rem;
+        min-height: 100px !important;
+    }
+    
+    .header-lock {
+        margin: 0 0 0.5rem 0 !important;
+    }
+    
+    .header-tagline {
+        font-size: 0.98rem !important;
+        margin-top: 0.3rem !important;
+        white-space: normal !important;
+    }
+    
+    .fab-contact {
+        right: 100px;
+        bottom: 32px;
+    }
+    
+    .contact-modal {
+        padding: 15px;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .contact-modal .modal-content {
+        max-width: 100%;
+        min-height: 350px;
+        margin: 10px auto;
+        max-height: calc(100vh - 30px);
+    }
+    
+    .contact-modal .modal-header {
+        padding: 20px 25px 15px;
+    }
+    
+    .contact-modal .modal-header h4 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-modal .modal-body {
+        padding: 25px;
+    }
+    
+    .contact-item {
+        padding: 14px 18px;
+        margin-bottom: 15px;
+        min-height: 55px;
+    }
+    
+    .contact-item i {
+        font-size: 22px;
+        width: 22px;
+        margin-right: 15px;
+    }
+    
+    .contact-item a,
+    .contact-item span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bento-container {
+        padding: 0.5rem;
+    }
+    
+    .bento-card {
+        padding: 1rem;
+        min-height: 160px;
+    }
+    
+    .brand-logo {
+        font-size: 1.5rem;
+    }
+    
+    .contact-modal {
+        padding: 10px;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .contact-modal .modal-content {
+        margin: 5px auto;
+        min-height: 320px;
+        border-radius: 20px;
+        max-height: calc(100vh - 20px);
+    }
+    
+    .contact-modal .modal-content::before {
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .contact-modal .modal-header {
+        padding: 18px 20px 12px;
+    }
+    
+    .contact-modal .modal-header h4 {
+        font-size: 1.1rem;
+        gap: 8px;
+    }
+    
+    .contact-modal .modal-header h4::before {
+        font-size: 1rem;
+    }
+    
+    .contact-modal .close {
+        width: 36px;
+        height: 36px;
+        font-size: 28px;
+        margin-left: 10px;
+    }
+    
+    .contact-modal .modal-body {
+        padding: 20px;
+    }
+    
+    .contact-item {
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        min-height: 50px;
+        border-radius: 14px;
+    }
+    
+    .contact-item i {
+        font-size: 20px;
+        width: 20px;
+        margin-right: 12px;
+    }
+    
+    .contact-item a,
+    .contact-item span {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .bento-card {
+        padding: 0.8rem;
+        min-height: 140px;
+    }
+    
+    .contact-modal {
+        padding: 5px;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .contact-modal .modal-content {
+        margin: 2px auto;
+        min-height: 300px;
+        max-height: calc(100vh - 10px);
+    }
+    
+    .contact-modal .modal-header {
+        padding: 15px 18px 10px;
+    }
+    
+    .contact-modal .modal-header h4 {
+        font-size: 1rem;
+    }
+    
+    .contact-modal .modal-body {
+        padding: 18px;
+    }
+    
+    .contact-item {
+        padding: 10px 14px;
+        margin-bottom: 10px;
+        min-height: 45px;
+    }
+    
+    .contact-item i {
+        font-size: 18px;
+        width: 18px;
+        margin-right: 10px;
+    }
+    
+    .contact-item a,
+    .contact-item span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ensure modal is always accessible on very small screens */
+@media (max-height: 600px) {
+    .contact-modal {
+        padding: 5px;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .contact-modal .modal-content {
+        margin: 2px auto;
+        min-height: auto;
+        max-height: calc(100vh - 10px);
+    }
+    
+    .contact-modal .modal-body {
+        padding: 15px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+    }
+}
+
+/* Force full coverage for all screen sizes */
+@media (max-width: 100vw) {
+    .contact-modal {
+        width: 100vw !important;
+        height: 100vh !important;
+        left: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+    }
+} 
